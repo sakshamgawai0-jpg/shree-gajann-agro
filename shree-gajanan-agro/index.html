@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="mr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title id="pageTitle">श्री गजानन अॅग्रो | Shree Gajanan Agro Khamgaon</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            agro: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              dark: '#052e16'
+            },
+            harvest: {
+              gold: '#f59e0b',
+              warm: '#d97706',
+              light: '#fef3c7'
+            }
+          },
+          fontFamily: {
+            sans: ['Mukta', 'Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Font Awesome & Google Fonts (Mukta for crisp Devanagari & Inter for numerals) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Mobile-first ergonomics & responsive guardrails */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      word-break: break-word;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-tap-highlight-color: transparent;
+      scroll-padding-top: 5rem;
+    }
+    
+    /* Minimum touch target size for comfortable mobile tapping (44x44px minimum) */
+    .touch-target {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Hide scrollbars while maintaining smooth kinetic horizontal scroll */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Safe bottom padding on mobiles to prevent navigation dock overlap */
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+      }
+    }
+
+    /* Active language button pill */
+    .lang-pill-active {
+      background-color: #15803d !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
+    }
+
+    /* Animated Non-blocking Toast */
+    @keyframes toastSlideIn {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes toastSlideOut {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(100%); opacity: 0; }
+    }
+    .toast-enter {
+      animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .toast-exit {
+      animation: toastSlideOut 0.25s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col font-sans">
+
+
+
+  <!-- ========================================== -->
+  <!-- 2. ANNOUNCEMENT STRIP                      -->
+  <!-- ========================================== -->
+  <div class="bg-agro-900 text-white text-xs sm:text-sm py-2 px-3 sm:px-6">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+        <span class="font-medium" data-i18n="announcementText">शेतकऱ्यांचा विश्वासू सोबती | संचालक: डी. भरंबे, खामगाव</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-semibold text-emerald-200">
+        <a href="tel:+919070911555" class="hover:text-white transition flex items-center gap-1.5 touch-target">
+          <i class="fa-solid fa-phone"></i> +91 90709 11555
+        </a>
+        <span class="text-slate-500 hidden sm:inline">|</span>
+        <span class="flex items-center gap-1.5">
+          <i class="fa-regular fa-clock"></i> <span data-i18n="shopHoursBrief">स. ८:०० ते रा. ८:३०</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 3. MAIN STICKY NAVBAR                      -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20 gap-2">
+        
+        <!-- Logo Branding -->
+        <a href="#" class="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-agro-600 to-agro-800 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition flex-shrink-0">
+            <i class="fa-solid fa-seedling text-lg sm:text-2xl text-amber-300"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-base sm:text-xl font-extrabold text-agro-900 tracking-tight leading-tight" data-i18n="brandTitle">श्री गजानन अॅग्रो</span>
+            <span class="text-[11px] sm:text-xs font-semibold text-slate-500 tracking-wider">Shree Gajanan Agro</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold">
+          <a href="#products" class="text-slate-700 hover:text-agro-700 transition" data-i18n="navCatalog">उत्पादने (Catalog)</a>
+          <a href="#services" class="text-slate-700 hover:text-agro-700 transition" data-i18n="navServices">सेवा (Services)</a>
+          <a href="#location" class="text-slate-700 hover:text-agro-700 transition" data-i18n="navLocation">पत्ता व नकाशा (Location)</a>
+          <a href="#contact" class="text-slate-700 hover:text-agro-700 transition" data-i18n="navContact">संपर्क (Contact)</a>
+        </nav>
+
+        <!-- Right Side Controls: Language Switcher, WhatsApp & Admin -->
+        <div class="flex items-center gap-1.5 sm:gap-2.5">
+          
+          <!-- Language Selector Segment (Marathi, Hindi, English) -->
+          <div class="inline-flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200" title="Change Language / भाषा बदला">
+            <button onclick="setLanguage('mr')" id="langBtn_mr" class="touch-target px-2 sm:px-2.5 py-1 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900">
+              मराठी
+            </button>
+            <button onclick="setLanguage('hi')" id="langBtn_hi" class="touch-target px-2 sm:px-2.5 py-1 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900">
+              हिंदी
+            </button>
+            <button onclick="setLanguage('en')" id="langBtn_en" class="touch-target px-2 sm:px-2.5 py-1 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900">
+              EN
+            </button>
+          </div>
+
+          <!-- WhatsApp Quick Action (Header) -->
+          <a id="headerWaLink" href="https://wa.me/919070911555" target="_blank" rel="noopener noreferrer" class="touch-target inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-xs sm:text-sm shadow-sm transition active:scale-95 flex-shrink-0" title="WhatsApp Chat">
+            <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
+            <span class="hidden md:inline">WhatsApp</span>
+          </a>
+
+          <!-- Admin Portal Trigger Button -->
+          <button id="adminBtn" onclick="openAdminModal()" class="touch-target inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-bold border border-slate-300 transition flex-shrink-0">
+            <i class="fa-solid fa-lock text-agro-700" id="adminBtnIcon"></i>
+            <span id="adminBtnLabel">Admin</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 4. HERO SHOWCASE SECTION                   -->
+  <!-- ========================================== -->
+  <section class="relative bg-gradient-to-b from-agro-900 via-agro-800 to-agro-950 text-white py-10 sm:py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-4 sm:space-y-5 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-agro-700/60 border border-emerald-400/30 text-emerald-300 text-xs sm:text-sm font-semibold">
+            <i class="fa-solid fa-certificate text-amber-400"></i>
+            <span data-i18n="heroBadge">प्रमाणित कृषी निविष्ठा केंद्र - कॉटन मार्केट, खामगाव</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight" id="heroHeadline">
+            दर्जेदार <span class="text-amber-400">बियाणे, खते</span> व आधुनिक ठिबक सिंचन
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto lg:mx-0" data-i18n="heroSubtitle">
+            सोयाबीन, कपाशी, हरभरा, भाजीपाला बियाणे, सूक्ष्म अन्नद्रव्ये, उच्च दर्जाचे औषध फवारणी पंप आणि कोठारी ठिबक सिंचनाचे अधिकृत विक्रेते.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
+            <a href="#products" class="touch-target px-5 sm:px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl font-bold text-sm sm:text-base shadow-lg transition flex items-center justify-center gap-2 w-full sm:w-auto">
+              <i class="fa-solid fa-boxes-stacked"></i> <span data-i18n="heroBtnBrowse">उत्पादने पहा व दर तपासा</span>
+            </a>
+            <a id="heroWaBtn" href="https://wa.me/919070911555" target="_blank" class="touch-target px-5 sm:px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-sm sm:text-base shadow-lg transition flex items-center justify-center gap-2 w-full sm:w-auto">
+              <i class="fa-brands fa-whatsapp text-lg"></i> <span data-i18n="heroBtnWa">व्हॉट्सअॅपवर विचारणा</span>
+            </a>
+          </div>
+
+          <!-- Highlight Badges -->
+          <div class="grid grid-cols-3 gap-2 sm:gap-4 pt-4 border-t border-emerald-800/60 max-w-lg mx-auto lg:mx-0">
+            <div class="text-center p-2.5 rounded-xl bg-white/5 border border-white/5">
+              <div class="text-amber-400 font-black text-lg sm:text-xl">१००%</div>
+              <div class="text-xs text-slate-300 font-medium" data-i18n="badgeGenuine">अस्सल बियाणे</div>
+            </div>
+            <div class="text-center p-2.5 rounded-xl bg-white/5 border border-white/5">
+              <div class="text-amber-400 font-black text-lg sm:text-xl" data-i18n="badgeAdviceTitle">सल्ला</div>
+              <div class="text-xs text-slate-300 font-medium" data-i18n="badgeAdvice">मोफत मार्गदर्शन</div>
+            </div>
+            <div class="text-center p-2.5 rounded-xl bg-white/5 border border-white/5">
+              <div class="text-amber-400 font-black text-lg sm:text-xl" data-i18n="badgePriceTitle">किफायतशीर</div>
+              <div class="text-xs text-slate-300 font-medium" data-i18n="badgePrice">रास्त शेतकरी भाव</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Summary Store Card -->
+        <div class="lg:col-span-5">
+          <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-5 sm:p-6 text-white shadow-2xl space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-white/10">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl flex-shrink-0">
+                  <i class="fa-solid fa-store"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-base sm:text-lg" data-i18n="storeCardTitle">दुकान माहिती (Store Details)</h3>
+                  <p class="text-xs text-slate-300" data-i18n="storeCity">खामगाव (जि. बुलढाणा)</p>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 text-xs font-bold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span data-i18n="storeStatus">उघडे आहे</span>
+              </span>
+            </div>
+
+            <div class="space-y-3 text-sm text-slate-200">
+              <div class="flex items-start gap-2.5">
+                <i class="fa-solid fa-user-check text-amber-400 mt-1 flex-shrink-0"></i>
+                <div>
+                  <span class="font-bold block text-white" data-i18n="labelOwner">मालक / संचालक:</span>
+                  <span>डी. भरंबे (Bharambe)</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i class="fa-solid fa-map-pin text-amber-400 mt-1 flex-shrink-0"></i>
+                <div>
+                  <span class="font-bold block text-white" data-i18n="labelAddress">पत्ता:</span>
+                  <span data-i18n="valAddress">टिळक पुतळ्याजवळ, कॉटन मार्केट रोड, खामगाव - ४४४३०३</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i class="fa-solid fa-phone text-amber-400 mt-1 flex-shrink-0"></i>
+                <div>
+                  <span class="font-bold block text-white" data-i18n="labelDirectPhone">थेट संपर्क क्रमांक:</span>
+                  <a href="tel:+919070911555" class="text-amber-300 font-bold hover:underline">+91 90709 11555</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a href="#location" class="w-full touch-target py-2.5 bg-white/20 hover:bg-white/30 text-white rounded-xl text-center text-sm font-bold flex items-center justify-center gap-2 transition">
+                <i class="fa-solid fa-diamond-turn-right"></i> <span data-i18n="btnViewMap">दुकानाचा नकाशा व दिशा पहा</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. REAL-TIME PRODUCT CATALOG SECTION       -->
+  <!-- ========================================== -->
+  <section id="products" class="py-10 sm:py-16 bg-slate-50 flex-grow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Catalog Controls -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-agro-100 text-agro-800 text-xs font-bold uppercase tracking-wider mb-2">
+            <span data-i18n="catalogBadge">थेट शेतकरी कॅटलॉग</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="catalogTitle">उपलब्ध कृषी उत्पादने व चालू भाव</h2>
+          <p class="text-slate-600 text-sm sm:text-base mt-1" data-i18n="catalogSubtitle">उत्पादन निवडा आणि एका क्लिकवर थेट व्हॉट्सअॅपवर दर व स्टॉकची माहिती मिळवा.</p>
+        </div>
+
+        <!-- Search Input -->
+        <div class="w-full md:w-80">
+          <div class="relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="text" id="searchInput" placeholder="उत्पादन किंवा वाण शोधा..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-agro-600 bg-white text-sm shadow-sm touch-target">
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories Filter Horizontal Scrollable Pills -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 no-scrollbar" id="categoryContainer">
+        <!-- Rendered via JS based on active language -->
+      </div>
+
+      <!-- Grid of Products -->
+      <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Empty Result State -->
+      <div id="emptyState" class="hidden text-center py-12 sm:py-16 bg-white rounded-2xl border border-dashed border-slate-300 p-6">
+        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-2xl">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+        <h3 class="text-lg font-bold text-slate-800" data-i18n="noProductTitle">उत्पादन सापडले नाही</h3>
+        <p class="text-slate-500 text-sm mt-1 max-w-sm mx-auto" data-i18n="noProductDesc">दुकानात अनेक इतर व्हरायटी उपलब्ध आहेत, कृपया थेट व्हॉट्सअॅपवर संपर्क करा.</p>
+        <a id="emptyStateWaBtn" href="https://wa.me/919070911555" target="_blank" class="mt-4 touch-target inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white rounded-xl text-sm font-semibold hover:bg-emerald-700 transition shadow-sm">
+          <i class="fa-brands fa-whatsapp text-lg"></i> <span data-i18n="btnAskWa">व्हॉट्सअॅपवर विचारा</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. SERVICES & ADVISORY SECTION             -->
+  <!-- ========================================== -->
+  <section id="services" class="py-12 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight" data-i18n="servicesTitle">आमची वैशिष्ट्ये व शेतकरी सेवा</h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-2" data-i18n="servicesSubtitle">खामगाव परिसरातील शेतकऱ्यांच्या पिकांचे संरक्षण व अधिक उत्पादनासाठी तंत्रशुद्ध सल्ला</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-agro-100 text-agro-700 flex items-center justify-center text-2xl mb-4">
+            <i class="fa-solid fa-certificate"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2" data-i18n="serv1Title">अस्सल बियाणे व खते</h3>
+          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="serv1Desc">
+            शासकीय व नामांकित कंपन्यांचे महाबीज सोयाबीन, संकरित बियाणे, सूक्ष्म पोषकद्रव्ये आणि वॉटर सोल्युबल खते.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl mb-4">
+            <i class="fa-solid fa-faucet-drip"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2" data-i18n="serv2Title">ठिबक सिंचन व फिटिंग्ज</h3>
+          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="serv2Desc">
+            कमीत कमी पाण्यात जास्तीत जास्त उत्पादन घेण्यासाठी दर्जेदार ड्रिप लॅटरल, व्हेंचुरी, फिल्टर आणि जोडण्या.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mb-4">
+            <i class="fa-solid fa-user-doctor"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2" data-i18n="serv3Title">पीक सल्ला (हळद, आले, कपाशी)</h3>
+          <p class="text-slate-600 text-sm leading-relaxed" data-i18n="serv3Desc">
+            कीड-रोग नियंत्रण, फवारणीचे अचूक वेळापत्रक आणि खतांचा डोस यावर भरंबे सरांचे प्रत्यक्ष मार्गदर्शन.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 7. LOCATION & GOOGLE MAPS SECTION          -->
+  <!-- ========================================== -->
+  <section id="location" class="py-12 sm:py-16 bg-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <div class="lg:col-span-5 bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-agro-100 text-agro-800 text-xs font-bold uppercase tracking-wider mb-3">
+              <span data-i18n="visitBadge">दुकान भेट (Store Visit)</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4" data-i18n="locHeading">आमचे दुकानाचे ठिकाण</h2>
+            <p class="text-slate-600 text-sm mb-6" data-i18n="locSub">खामगाव शहरातील मुख्य कॉटन मार्केट रोडवर, शेतकरी बांधवांसाठी सहज पोहोचता येणारे मध्यवर्ती दुकान.</p>
+
+            <div class="space-y-4 text-sm text-slate-700">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-agro-50 text-agro-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900" data-i18n="labelAddress">पत्ता:</h4>
+                  <p class="text-slate-600 mt-0.5" data-i18n="fullAddress">श्री गजानन अॅग्रो, लोकमान्य टिळक पुतळ्याजवळ, कॉटन मार्केट रोड, खामगाव, जि. बुलढाणा - ४४४३०३</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-agro-50 text-agro-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900" data-i18n="labelDirectPhone">थेट फोन संपर्क:</h4>
+                  <a href="tel:+919070911555" class="text-agro-700 font-bold hover:underline block text-base">+91 90709 11555</a>
+                  <a href="tel:+918734925224" class="text-slate-500 text-xs hover:underline block">+91 87349 25224</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-agro-50 text-agro-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900" data-i18n="labelStoreHours">दुकान वेळ:</h4>
+                  <p class="text-slate-600 mt-0.5" data-i18n="valStoreHours">सकाळी ८:०० ते रात्री ८:३० (रविवार स. ८ ते दु. २)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
+            <a href="https://maps.google.com/?q=Cotton+Market+Khamgaon+Maharashtra+444303" target="_blank" rel="noopener noreferrer" class="touch-target flex-1 py-3 px-4 bg-agro-700 hover:bg-agro-800 text-white rounded-xl font-bold text-sm text-center shadow-sm transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-map-location-dot"></i> <span data-i18n="btnOpenMap">Maps वर उघडा</span>
+            </a>
+            <a href="tel:+919070911555" class="touch-target py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl font-bold text-sm text-center transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-phone"></i> <span data-i18n="btnCall">कॉल करा</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Google Map Iframe Container -->
+        <div class="lg:col-span-7 bg-white p-3 rounded-2xl shadow-sm border border-slate-200 min-h-[360px] flex flex-col">
+          <div class="w-full flex-grow rounded-xl overflow-hidden border border-slate-200 relative bg-slate-100">
+            <iframe 
+              title="Shree Gajanan Agro Khamgaon Location Map"
+              class="w-full h-full min-h-[340px] border-0"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14945.18731306395!2d76.5557!3d20.6908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd7513b632ab3e1%3A0x6339179d6ea90e10!2sCotton%20Market%2C%20Khamgaon%2C%20Maharashtra%20444303!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <div class="text-xs text-slate-500 mt-2 px-1 flex flex-col sm:flex-row items-center justify-between gap-1">
+            <span><i class="fa-solid fa-location-crosshairs text-agro-600"></i> <span data-i18n="mapNote">कॉटन मार्केट परिसर, खामगाव (जि. बुलढाणा)</span></span>
+            <span class="text-agro-700 font-bold" data-i18n="mapPincode">पिनकोड: ४४४३०३</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 8. FOOTER & SOCIAL MEDIA LINKS             -->
+  <!-- ========================================== -->
+  <footer id="contact" class="bg-slate-900 text-white pt-12 pb-8 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+        
+        <div class="md:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-agro-600 flex items-center justify-center text-white text-xl flex-shrink-0">
+              <i class="fa-solid fa-leaf text-amber-300"></i>
+            </div>
+            <div>
+              <span class="text-lg font-bold block text-white" data-i18n="brandFooterTitle">श्री गजानन अॅग्रो - खामगाव</span>
+              <span class="text-xs text-slate-400">Shree Gajanan Agro (Bharambe)</span>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm max-w-md leading-relaxed" data-i18n="footerAbout">
+            खामगाव तालुक्यातील शेतकऱ्यांचा विश्वासाचा केंद्रबिंदू. अस्सल वाणांची बियाणे, ठिबक साहित्य आणि शेती सल्ला.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold text-slate-200 uppercase tracking-wider mb-4" data-i18n="footerLinksTitle">दुवे (Links)</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#products" class="hover:text-emerald-400 transition" data-i18n="footCatalog">सर्व उत्पादने व दर</a></li>
+            <li><a href="#services" class="hover:text-emerald-400 transition" data-i18n="footServices">शेती सल्ला व मार्गदर्शन</a></li>
+            <li><a href="#location" class="hover:text-emerald-400 transition" data-i18n="footLocation">दुकानाचा पत्ता</a></li>
+            <li><button onclick="handleFooterAdminClick()" class="hover:text-emerald-400 transition text-left touch-target" data-i18n="footAdmin">अॅडमिन पोर्टल</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold text-slate-200 uppercase tracking-wider mb-4" data-i18n="footerSocialTitle">सोशल मीडिया व संपर्क</h4>
+          <div class="flex items-center gap-3 mb-4">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram" class="touch-target w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-500 via-pink-600 to-purple-600 text-white flex items-center justify-center text-lg hover:scale-105 transition shadow-sm">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/919070911555" target="_blank" rel="noopener noreferrer" title="WhatsApp" class="touch-target w-11 h-11 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg hover:scale-105 transition shadow-sm">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <!-- Facebook -->
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook" class="touch-target w-11 h-11 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg hover:scale-105 transition shadow-sm">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <!-- Direct Phone -->
+            <a href="tel:+919070911555" title="Call" class="touch-target w-11 h-11 rounded-xl bg-slate-800 border border-slate-700 text-amber-400 flex items-center justify-center text-lg hover:scale-105 transition shadow-sm">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+          <div class="text-xs text-slate-400">
+            <span data-i18n="footContactPrefix">कॉल किंवा व्हॉट्सअॅप:</span> <a href="tel:+919070911555" class="text-white font-bold hover:underline">+91 90709 11555</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+        <div>
+          © <span id="currentYear"></span> <span data-i18n="brandFooterTitle">श्री गजानन अॅग्रो, खामगाव</span>. <span data-i18n="allRights">सर्व हक्क सुरक्षित.</span>
+        </div>
+        <div class="text-slate-400" data-i18n="directorFooter">
+          प्रमाणित कृषी केंद्र | संचालक: डी. भरंबे (Bharambe)
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- 9. MOBILE FLOATING QUICK ACTION DOCK       -->
+  <!-- ========================================== -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-2 flex items-center justify-around shadow-2xl">
+    <a href="#products" class="touch-target flex flex-col items-center justify-center text-slate-600 hover:text-agro-700 transition px-2">
+      <i class="fa-solid fa-boxes-stacked text-base"></i>
+      <span class="text-[11px] font-semibold mt-0.5" data-i18n="dockCatalog">उत्पादने</span>
+    </a>
+    <a href="tel:+919070911555" class="touch-target flex flex-col items-center justify-center text-slate-600 hover:text-agro-700 transition px-2">
+      <i class="fa-solid fa-phone text-base text-amber-600"></i>
+      <span class="text-[11px] font-semibold mt-0.5" data-i18n="dockCall">कॉल</span>
+    </a>
+    <a id="dockWaLink" href="https://wa.me/919070911555" target="_blank" class="touch-target flex flex-col items-center justify-center text-emerald-600 font-bold px-3 py-1 bg-emerald-50 rounded-xl border border-emerald-200">
+      <i class="fa-brands fa-whatsapp text-lg"></i>
+      <span class="text-[11px] mt-0.5">WhatsApp</span>
+    </a>
+    <a href="#location" class="touch-target flex flex-col items-center justify-center text-slate-600 hover:text-agro-700 transition px-2">
+      <i class="fa-solid fa-location-dot text-base text-agro-700"></i>
+      <span class="text-[11px] font-semibold mt-0.5" data-i18n="dockLocation">नकाशा</span>
+    </a>
+    <button onclick="handleMobileAdminClick()" class="touch-target flex flex-col items-center justify-center text-slate-600 hover:text-agro-700 transition px-2">
+      <i class="fa-solid fa-shield-halved text-base"></i>
+      <span class="text-[11px] font-semibold mt-0.5" id="dockAdminLabel">Admin</span>
+    </button>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 10. ADMIN LOGIN MODAL                      -->
+  <!-- ========================================== -->
+  <div id="loginModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-lg bg-agro-100 text-agro-700 flex items-center justify-center text-base">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-900 text-base" data-i18n="adminLoginTitle">अॅडमिन लॉगिन (Admin Portal)</h3>
+            <p class="text-xs text-slate-500" data-i18n="adminLoginSubtitle">स्टॉक व किमती व्यवस्थापन</p>
+          </div>
+        </div>
+        <button onclick="closeAdminModal()" aria-label="Close" class="touch-target w-9 h-9 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <form id="adminLoginForm" class="mt-5 space-y-4" onsubmit="handleAdminLogin(event)">
+        <div id="loginErrorMsg" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium flex items-center gap-2">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span id="loginErrorText" data-i18n="invalidAuth">अवैध वापरकर्ता नाव किंवा पासवर्ड!</span>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">User ID</label>
+          <input type="text" id="adminUser" required placeholder="User ID" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-agro-600 text-sm touch-target">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Password</label>
+          <input type="password" id="adminPass" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-agro-600 text-sm touch-target">
+        </div>
+
+        <button type="submit" class="w-full touch-target py-3 bg-agro-700 hover:bg-agro-800 text-white rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> <span data-i18n="btnLoginAction">लॉगिन करा</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 11. ADMIN DASHBOARD OVERLAY MODAL          -->
+  <!-- ========================================== -->
+  <div id="adminDashboardModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden overflow-y-auto">
+    <div class="min-h-screen p-3 sm:p-6 flex flex-col justify-start max-w-6xl mx-auto">
+      
+      <!-- Dashboard Top Header -->
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-xl border border-slate-200 mb-6 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-xl bg-agro-700 text-white flex items-center justify-center text-xl shadow-md flex-shrink-0">
+            <i class="fa-solid fa-boxes-packing"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="text-lg sm:text-xl font-extrabold text-slate-900" data-i18n="dashTitle">दुकान स्टॉक डॅशबोर्ड</h2>
+              <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full" data-i18n="dashActive">सक्रिय</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-500">श्री गजानन अॅग्रो, खामगाव</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 flex-wrap">
+          <button onclick="openProductFormModal()" class="touch-target px-4 py-2.5 bg-agro-600 hover:bg-agro-700 text-white rounded-xl font-bold text-sm shadow-sm transition flex items-center gap-2">
+            <i class="fa-solid fa-plus"></i> <span data-i18n="dashAddProduct">नवीन उत्पादन जोडा</span>
+          </button>
+          <button onclick="resetToDefaultCatalogPrompt()" class="touch-target px-3 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold text-xs border border-slate-300 transition flex items-center gap-1.5" title="Reset Catalog">
+            <i class="fa-solid fa-rotate-left"></i> <span data-i18n="dashReset">रिसेट</span>
+          </button>
+          <button onclick="handleAdminLogout()" class="touch-target px-3.5 py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl font-bold text-sm border border-rose-200 transition flex items-center gap-2">
+            <i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="dashLogout">लॉगआऊट</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Counter -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+          <span class="text-xs text-slate-500 font-semibold block" data-i18n="statTotal">एकूण उत्पादने</span>
+          <span id="statTotalItems" class="text-2xl font-black text-slate-800">0</span>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+          <span class="text-xs text-slate-500 font-semibold block" data-i18n="statInStock">स्टॉक उपलब्ध</span>
+          <span id="statInStock" class="text-2xl font-black text-emerald-600">0</span>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+          <span class="text-xs text-slate-500 font-semibold block" data-i18n="statLimited">मर्यादित साठा</span>
+          <span id="statLimitedStock" class="text-2xl font-black text-amber-500">0</span>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+          <span class="text-xs text-slate-500 font-semibold block" data-i18n="statOutOfStock">संपलेला साठा</span>
+          <span id="statOutOfStock" class="text-2xl font-black text-rose-600">0</span>
+        </div>
+      </div>
+
+      <!-- Live Stock Table -->
+      <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden flex-grow flex flex-col">
+        <div class="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50">
+          <div>
+            <h3 class="font-bold text-slate-800 text-base" data-i18n="dashTableHead">उत्पादनांची यादी (Live Inventory)</h3>
+            <p class="text-xs text-slate-500" data-i18n="dashTableSub">येथून कधीही नाव, भाव, युनिट व स्टॉक स्थिती बदला किंवा डिलीट करा.</p>
+          </div>
+          <div class="relative w-full sm:w-64">
+            <input type="text" id="adminTableSearch" oninput="filterAdminTable()" placeholder="यादीत शोधा..." class="w-full text-xs pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-agro-600 bg-white touch-target">
+            <i class="fa-solid fa-search absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto flex-grow">
+          <table class="w-full text-left text-sm text-slate-700">
+            <thead class="bg-slate-100 text-xs text-slate-600 uppercase border-b border-slate-200">
+              <tr>
+                <th class="py-3 px-4" data-i18n="thProduct">उत्पादन</th>
+                <th class="py-3 px-3" data-i18n="thCategory">प्रवर्ग</th>
+                <th class="py-3 px-3" data-i18n="thPrice">किंमत</th>
+                <th class="py-3 px-3" data-i18n="thStatus">स्थिती</th>
+                <th class="py-3 px-4 text-right" data-i18n="thActions">कृती</th>
+              </tr>
+            </thead>
+            <tbody id="adminProductsTableBody" class="divide-y divide-slate-100 font-medium">
+              <!-- Injected by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mt-4 pb-6 text-center">
+        <button onclick="toggleAdminDashboardView(false)" class="touch-target px-4 py-2 text-slate-300 hover:text-white text-sm font-semibold underline underline-offset-4 inline-flex items-center gap-2">
+          <i class="fa-solid fa-arrow-left"></i> <span data-i18n="dashBackToCustomer">ग्राहक दृश्य वर परत जा (Back to Customer Website)</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 12. ADD / EDIT PRODUCT MODAL               -->
+  <!-- ========================================== -->
+  <div id="productFormModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 my-8">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div>
+          <h3 id="productFormTitle" class="font-bold text-slate-900 text-lg">नवीन उत्पादन जोडा</h3>
+          <p class="text-xs text-slate-500" id="productFormSubtitle">नाव, भाव आणि साठा प्रविष्ट करा</p>
+        </div>
+        <button onclick="closeProductFormModal()" aria-label="Close" class="touch-target w-9 h-9 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <form id="productForm" class="mt-4 space-y-4" onsubmit="handleSaveProduct(event)">
+        <input type="hidden" id="editProductId" value="">
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" data-i18n="fldProdName">उत्पादनाचे नाव (Product Name) *</label>
+          <input type="text" id="formProductName" required placeholder="उदा. महाबीज सोयाबीन JS 335" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-agro-600 text-sm touch-target">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" data-i18n="fldCategory">प्रवर्ग (Category) *</label>
+            <select id="formProductCategory" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-agro-600 text-sm bg-white touch-target">
+              <option value="seeds">बियाणे (Seeds)</option>
+              <option value="fertilizers">खते (Fertilizers)</option>
+              <option value="pesticides">औषधे (Pesticides)</option>
+              <option value="irrigation">ठिबक सिंचन (Irrigation)</option>
+              <option value="sprayers">फवारणी यंत्रे (Sprayers)</option>
+              <option value="general">इतर साहित्य (General)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" data-i18n="fldPrice">किंमत ₹ (Price) *</label>
+            <input type="number" id="formProductPrice" required min="0" step="any" placeholder="850" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-agro-600 text-sm touch-target">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" data-i18n="fldUnit">युनिट / पॅक (Unit)</label>
+            <input type="text" id="formProductUnit" placeholder="30 kg बॅग / 1 लिटर" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-agro-600 text-sm touch-target">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" data-i18n="fldStock">साठा स्थिती (Stock Status)</label>
+            <select id="formProductStock" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-agro-600 text-sm bg-white touch-target">
+              <option value="in_stock">मुबलक साठा (In Stock)</option>
+              <option value="limited">मर्यादित साठा (Limited Stock)</option>
+              <option value="out_of_stock">संपला आहे (Out of Stock)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" data-i18n="fldDesc">माहिती / वैशिष्ट्ये (Short Note)</label>
+          <textarea id="formProductDesc" rows="2" placeholder="१००% उगवण क्षमता, उच्च गुणवत्ता..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-agro-600 text-sm"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" data-i18n="fldIcon">आयकॉन निवडा (Product Icon)</label>
+          <select id="formProductIcon" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-agro-600 text-sm bg-white touch-target">
+            <option value="fa-seedling">🌱 बियाणे (Seed)</option>
+            <option value="fa-flask">🧪 खते / पोषण (Fertilizer/Chemical)</option>
+            <option value="fa-shield-virus">🛡️ कीटकनाशक / औषध (Pesticide)</option>
+            <option value="fa-faucet-drip">💧 ठिबक सिंचन (Drip Line)</option>
+            <option value="fa-spray-can">💨 फवारणी पंप (Sprayer)</option>
+            <option value="fa-box-open">📦 पॅक उत्पादन (Pack Item)</option>
+            <option value="fa-wheat-awn">🌾 धान्य / वाण (Crop Grain)</option>
+          </select>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-3">
+          <button type="button" onclick="closeProductFormModal()" class="touch-target px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition" data-i18n="btnCancel">
+            रद्द करा
+          </button>
+          <button type="submit" class="touch-target px-6 py-2.5 bg-agro-700 hover:bg-agro-800 text-white rounded-xl text-sm font-bold shadow-md transition" data-i18n="btnSave">
+            सेव्ह करा (Save)
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 13. CUSTOM CONFIRMATION MODAL              -->
+  <!-- ========================================== -->
+  <div id="confirmModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 text-center">
+      <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-2xl">
+        <i class="fa-solid fa-triangle-exclamation" id="confirmModalIcon"></i>
+      </div>
+      <h3 class="text-lg font-bold text-slate-900" id="confirmModalTitle">तुम्हाला खात्री आहे?</h3>
+      <p class="text-sm text-slate-500 mt-1 mb-5" id="confirmModalMessage">हे उत्पादन कायमस्वरूपी हटवले जाईल.</p>
+      <div class="flex items-center justify-center gap-3">
+        <button id="confirmCancelBtn" onclick="closeConfirmModal()" class="touch-target px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-semibold transition flex-1" data-i18n="btnCancel">
+          रद्द करा
+        </button>
+        <button id="confirmActionBtn" class="touch-target px-4 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-sm font-bold transition flex-1" data-i18n="btnConfirmDelete">
+          हटवा (Confirm)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 14. ANIMATED TOAST NOTIFICATION COMPONENT  -->
+  <!-- ========================================== -->
+  <div id="toastNotification" class="fixed bottom-16 md:bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl border border-slate-700 text-sm font-medium transform transition-all duration-300 translate-y-24 opacity-0 pointer-events-none flex items-center gap-3 max-w-sm">
+    <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+    <span id="toastMsg" class="flex-1">सूचना</span>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 15. MULTILINGUAL & APPLICATION CONTROLLER  -->
+  <!-- ========================================== -->
+  <script>
+    /* ============================================================
+       1. I18N DICTIONARY (MARATHI, HINDI, ENGLISH)
+       ============================================================ */
+    const I18N = {
+      mr: {
+        pageTitle: "श्री गजानन अॅग्रो | Shree Gajanan Agro Khamgaon",
+        announcementText: "शेतकऱ्यांचा विश्वासू सोबती | संचालक: डी. भरंबे, खामगाव",
+        shopHoursBrief: "स. ८:०० ते रा. ८:३०",
+        brandTitle: "श्री गजानन अॅग्रो",
+        navCatalog: "उत्पादने (Catalog)",
+        navServices: "सेवा (Services)",
+        navLocation: "पत्ता व नकाशा (Location)",
+        navContact: "संपर्क (Contact)",
+        heroBadge: "प्रमाणित कृषी निविष्ठा केंद्र - कॉटन मार्केट, खामगाव",
+        heroHeadlineHtml: 'दर्जेदार <span class="text-amber-400">बियाणे, खते</span> व आधुनिक ठिबक सिंचन',
+        heroSubtitle: "सोयाबीन, कपाशी, हरभरा, भाजीपाला बियाणे, सूक्ष्म अन्नद्रव्ये, उच्च दर्जाचे औषध फवारणी पंप आणि कोठारी ठिबक सिंचनाचे अधिकृत विक्रेते.",
+        heroBtnBrowse: "उत्पादने पहा व दर तपासा",
+        heroBtnWa: "व्हॉट्सअॅपवर विचारणा",
+        badgeGenuine: "अस्सल बियाणे",
+        badgeAdviceTitle: "सल्ला",
+        badgeAdvice: "मोफत मार्गदर्शन",
+        badgePriceTitle: "किफायतशीर",
+        badgePrice: "रास्त शेतकरी भाव",
+        storeCardTitle: "दुकान माहिती (Store Details)",
+        storeCity: "खामगाव (जि. बुलढाणा)",
+        storeStatus: "उघडे आहे",
+        labelOwner: "मालक / संचालक:",
+        labelAddress: "पत्ता:",
+        valAddress: "टिळक पुतळ्याजवळ, कॉटन मार्केट रोड, खामगाव - ४४४३०३",
+        labelDirectPhone: "थेट संपर्क क्रमांक:",
+        btnViewMap: "दुकानाचा नकाशा व दिशा पहा",
+        catalogBadge: "थेट शेतकरी कॅटलॉग",
+        catalogTitle: "उपलब्ध कृषी उत्पादने व चालू भाव",
+        catalogSubtitle: "उत्पादन निवडा आणि एका क्लिकवर थेट व्हॉट्सअॅपवर दर व स्टॉकची माहिती मिळवा.",
+        searchPlaceholder: "उत्पादन किंवा वाण शोधा...",
+        noProductTitle: "उत्पादन सापडले नाही",
+        noProductDesc: "दुकानात अनेक इतर व्हरायटी उपलब्ध आहेत, कृपया थेट व्हॉट्सअॅपवर संपर्क करा.",
+        btnAskWa: "व्हॉट्सअॅपवर विचारा",
+        servicesTitle: "आमची वैशिष्ट्ये व शेतकरी सेवा",
+        servicesSubtitle: "खामगाव परिसरातील शेतकऱ्यांच्या पिकांचे संरक्षण व अधिक उत्पादनासाठी तंत्रशुद्ध सल्ला",
+        serv1Title: "अस्सल बियाणे व खते",
+        serv1Desc: "शासकीय व नामांकित कंपन्यांचे महाबीज सोयाबीन, संकरित बियाणे, सूक्ष्म पोषकद्रव्ये आणि वॉटर सोल्युबल खते.",
+        serv2Title: "ठिबक सिंचन व फिटिंग्ज",
+        serv2Desc: "कमीत कमी पाण्यात जास्तीत जास्त उत्पादन घेण्यासाठी दर्जेदार ड्रिप लॅटरल, व्हेंचुरी, फिल्टर आणि जोडण्या.",
+        serv3Title: "पीक सल्ला (हळद, आले, कपाशी)",
+        serv3Desc: "कीड-रोग नियंत्रण, फवारणीचे अचूक वेळापत्रक आणि खतांचा डोस यावर भरंबे सरांचे प्रत्यक्ष मार्गदर्शन.",
+        visitBadge: "दुकान भेट (Store Visit)",
+        locHeading: "आमचे दुकानाचे ठिकाण",
+        locSub: "खामगाव शहरातील मुख्य कॉटन मार्केट रोडवर, शेतकरी बांधवांसाठी सहज पोहोचता येणारे मध्यवर्ती दुकान.",
+        fullAddress: "श्री गजानन अॅग्रो, लोकमान्य टिळक पुतळ्याजवळ, कॉटन मार्केट रोड, खामगाव, जि. बुलढाणा - ४४४३०३",
+        labelStoreHours: "दुकान वेळ:",
+        valStoreHours: "सकाळी ८:०० ते रात्री ८:३० (रविवार स. ८ ते दु. २)",
+        btnOpenMap: "Maps वर उघडा",
+        btnCall: "कॉल करा",
+        mapNote: "कॉटन मार्केट परिसर, खामगाव (जि. बुलढाणा)",
+        mapPincode: "पिनकोड: ४४४३०३",
+        brandFooterTitle: "श्री गजानन अॅग्रो - खामगाव",
+        footerAbout: "खामगाव तालुक्यातील शेतकऱ्यांचा विश्वासाचा केंद्रबिंदू. अस्सल वाणांची बियाणे, ठिबक साहित्य आणि शेती सल्ला.",
+        footerLinksTitle: "दुवे (Links)",
+        footCatalog: "सर्व उत्पादने व दर",
+        footServices: "शेती सल्ला व मार्गदर्शन",
+        footLocation: "दुकानाचा पत्ता",
+        footAdmin: "अॅडमिन पोर्टल",
+        footerSocialTitle: "सोशल मीडिया व संपर्क",
+        footContactPrefix: "कॉल किंवा व्हॉट्सअॅप:",
+        allRights: "सर्व हक्क सुरक्षित.",
+        directorFooter: "प्रमाणित कृषी केंद्र | संचालक: डी. भरंबे (Bharambe)",
+        dockCatalog: "उत्पादने",
+        dockCall: "कॉल",
+        dockLocation: "नकाशा",
+        adminLoginTitle: "अॅडमिन लॉगिन (Admin Portal)",
+        adminLoginSubtitle: "स्टॉक व किमती व्यवस्थापन",
+        btnLoginAction: "लॉगिन करा",
+        invalidAuth: "अवैध वापरकर्ता नाव किंवा पासवर्ड!",
+        dashTitle: "दुकान स्टॉक डॅशबोर्ड",
+        dashActive: "सक्रिय",
+        dashAddProduct: "नवीन उत्पादन जोडा",
+        dashReset: "रिसेट",
+        dashLogout: "लॉगआऊट",
+        statTotal: "एकूण उत्पादने",
+        statInStock: "स्टॉक उपलब्ध",
+        statLimited: "मर्यादित साठा",
+        statOutOfStock: "संपलेला साठा",
+        dashTableHead: "उत्पादनांची यादी (Live Inventory)",
+        dashTableSub: "येथून कधीही नाव, भाव, युनिट व स्टॉक स्थिती बदला किंवा डिलीट करा.",
+        thProduct: "उत्पादन",
+        thCategory: "प्रवर्ग",
+        thPrice: "किंमत",
+        thStatus: "स्थिती",
+        thActions: "कृती",
+        dashBackToCustomer: "ग्राहक दृश्य वर परत जा (Back to Customer Website)",
+        fldProdName: "उत्पादनाचे नाव (Product Name) *",
+        fldCategory: "प्रवर्ग (Category) *",
+        fldPrice: "किंमत ₹ (Price) *",
+        fldUnit: "युनिट / पॅक (Unit)",
+        fldStock: "साठा स्थिती (Stock Status)",
+        fldDesc: "माहिती / वैशिष्ट्ये (Short Note)",
+        fldIcon: "आयकॉन निवडा (Product Icon)",
+        btnCancel: "रद्द करा",
+        btnSave: "सेव्ह करा (Save)",
+        btnConfirmDelete: "हटवा (Confirm)",
+        btnInquireWa: "व्हॉट्सअॅपवर विचारणा करा",
+        priceLabel: "किंमत:",
+        inStockLabel: "उपलब्ध (In Stock)",
+        limitedStockLabel: "मर्यादित साठा",
+        outOfStockLabel: "स्टॉक संपला",
+        waMessagePrefix: "नमस्कार श्री गजानन अॅग्रो खामगाव,\nमला '{name}' (दर: ₹{price} / {unit}) बद्दल चौकशी करायची आहे आणि खरेदी करायचे आहे. कृपया उपलब्धता सांगा."
+      },
+      hi: {
+        pageTitle: "श्री गजानन एग्रो | Shree Gajanan Agro Khamgaon",
+        announcementText: "किसानों का सच्चा साथी | संचालक: डी. भरंबे, खामगांव",
+        shopHoursBrief: "सु. ८:०० से रा. ८:३०",
+        brandTitle: "श्री गजानन एग्रो",
+        navCatalog: "उत्पाद (Catalog)",
+        navServices: "सेवाएं (Services)",
+        navLocation: "पता व नक्शा (Location)",
+        navContact: "संपर्क (Contact)",
+        heroBadge: "प्रमाणित कृषि इनपुट केंद्र - कॉटन मार्केट, खामगांव",
+        heroHeadlineHtml: 'उत्कृष्ट <span class="text-amber-400">बीज, उर्वरक</span> और आधुनिक ड्रिप सिंचाई',
+        heroSubtitle: "सोयाबीन, कपास, चना, सब्जी बीज, सूक्ष्म पोषक तत्व, उच्च गुणवत्ता वाले स्प्रेयर पंप और कोठारी ड्रिप सिंचाई के अधिकृत विक्रेता।",
+        heroBtnBrowse: "उत्पाद देखें व रेट चेक करें",
+        heroBtnWa: "व्हाट्सएप पर पूछताछ",
+        badgeGenuine: "असली बीज",
+        badgeAdviceTitle: "सलाह",
+        badgeAdvice: "मुफ्त मार्गदर्शन",
+        badgePriceTitle: "किफायती",
+        badgePrice: "उचित किसान दरें",
+        storeCardTitle: "दुकान विवरण (Store Details)",
+        storeCity: "खामगांव (जिला बुलढाणा)",
+        storeStatus: "खुला है",
+        labelOwner: "मालिक / संचालक:",
+        labelAddress: "पता:",
+        valAddress: "तिलक प्रतिमा के पास, कॉटन मार्केट रोड, खामगांव - ४४४३०३",
+        labelDirectPhone: "सीधा संपर्क नंबर:",
+        btnViewMap: "दुकान का नक्शा और दिशा देखें",
+        catalogBadge: "सीधा किसान कैटलॉग",
+        catalogTitle: "उपलब्ध कृषि उत्पाद और वर्तमान रेट",
+        catalogSubtitle: "उत्पाद चुनें और एक क्लिक में सीधे व्हाट्सएप पर रेट व स्टॉक की जानकारी प्राप्त करें।",
+        searchPlaceholder: "उत्पाद या किस्म खोजें...",
+        noProductTitle: "उत्पाद नहीं मिला",
+        noProductDesc: "दुकान में कई अन्य किस्में उपलब्ध हैं, कृपया सीधे व्हाट्सएप पर संपर्क करें।",
+        btnAskWa: "व्हाट्सएप पर पूछें",
+        servicesTitle: "हमारी विशेषताएं और किसान सेवाएं",
+        servicesSubtitle: "खामगांव क्षेत्र के किसानों की फसलों की सुरक्षा और अधिक पैदावार के लिए वैज्ञानिक मार्गदर्शन।",
+        serv1Title: "असली बीज और उर्वरक",
+        serv1Desc: "सरकारी और प्रतिष्ठित कंपनियों के महाबीज सोयाबीन, हाइब्रिड बीज, सूक्ष्म पोषक तत्व और घुलनशील उर्वरक।",
+        serv2Title: "ड्रिप सिंचाई और फिटिंग",
+        serv2Desc: "कम पानी में अधिक उत्पादन के लिए उच्च गुणवत्ता वाली ड्रिप लेटरल, वेंचुरी, फिल्टर और जोड़ियां।",
+        serv3Title: "फसल सलाह (हल्दी, अदरक, कपास)",
+        serv3Desc: "कीट-रोग नियंत्रण, स्प्रे का सटीक शेड्यूल और खाद की मात्रा पर भरंबे सर का सीधा मार्गदर्शन।",
+        visitBadge: "दुकान पर पधारें (Store Visit)",
+        locHeading: "हमारी दुकान का स्थान",
+        locSub: "खामगांव शहर की मुख्य कॉटन मार्केट रोड पर, किसान भाइयों के लिए आसानी से पहुंचने योग्य केंद्र।",
+        fullAddress: "श्री गजानन एग्रो, लोकमान्य तिलक प्रतिमा के पास, कॉटन मार्केट रोड, खामगांव, जि. बुलढाणा - ४४४३०३",
+        labelStoreHours: "दुकान का समय:",
+        valStoreHours: "सुबह ८:०० से रात ८:३० (रविवार सुबह ८ से दोपहर २)",
+        btnOpenMap: "Google Maps पर खोलें",
+        btnCall: "कॉल करें",
+        mapNote: "कॉटन मार्केट परिसर, खामगांव (जि. बुलढाणा)",
+        mapPincode: "पिनकोड: ४४४३०३",
+        brandFooterTitle: "श्री गजानन एग्रो - खामगांव",
+        footerAbout: "खामगांव तहसील के किसानों का विश्वसनीय केंद्र। असली बीज, ड्रिप सामग्री और सटीक फसल सलाह।",
+        footerLinksTitle: "लिंक्स (Links)",
+        footCatalog: "सभी उत्पाद और दरें",
+        footServices: "कृषि सलाह व मार्गदर्शन",
+        footLocation: "दुकान का पता",
+        footAdmin: "एडमिन पोर्टल",
+        footerSocialTitle: "सोशल मीडिया और संपर्क",
+        footContactPrefix: "कॉल या व्हाट्सएप:",
+        allRights: "सर्वाधिकार सुरक्षित।",
+        directorFooter: "प्रमाणित कृषि केंद्र | संचालक: डी. भरंबे (Bharambe)",
+        dockCatalog: "उत्पाद",
+        dockCall: "कॉल",
+        dockLocation: "नक्शा",
+        adminLoginTitle: "एडमिन लॉगिन (Admin Portal)",
+        adminLoginSubtitle: "स्टॉक और मूल्य प्रबंधन",
+        btnLoginAction: "लॉगिन करें",
+        invalidAuth: "अमान्य यूज़रनेम या पासवर्ड!",
+        dashTitle: "दुकान स्टॉक डैशबोर्ड",
+        dashActive: "सक्रिय",
+        dashAddProduct: "नया उत्पाद जोड़ें",
+        dashReset: "रीसेट",
+        dashLogout: "लॉगआउट",
+        statTotal: "कुल उत्पाद",
+        statInStock: "स्टॉक उपलब्ध",
+        statLimited: "सीमित स्टॉक",
+        statOutOfStock: "स्टॉक समाप्त",
+        dashTableHead: "उत्पादों की सूची (Live Inventory)",
+        dashTableSub: "यहां से कभी भी नाम, भाव, यूनिट और स्टॉक स्थिति बदलें या डिलीट करें।",
+        thProduct: "उत्पाद",
+        thCategory: "श्रेणी",
+        thPrice: "मूल्य",
+        thStatus: "स्थिति",
+        thActions: "क्रियाएं",
+        dashBackToCustomer: "ग्राहक वेबसाइट पर वापस जाएं (Back to Customer Website)",
+        fldProdName: "उत्पाद का नाम (Product Name) *",
+        fldCategory: "श्रेणी (Category) *",
+        fldPrice: "मूल्य ₹ (Price) *",
+        fldUnit: "यूनिट / पैक (Unit)",
+        fldStock: "स्टॉक स्थिति (Stock Status)",
+        fldDesc: "विवरण / विशेषताएं (Short Note)",
+        fldIcon: "आइकन चुनें (Product Icon)",
+        btnCancel: "रद्द करें",
+        btnSave: "सहेजें (Save)",
+        btnConfirmDelete: "हटाएं (Confirm)",
+        btnInquireWa: "व्हाट्सएप पर पूछताछ करें",
+        priceLabel: "मूल्य:",
+        inStockLabel: "उपलब्ध (In Stock)",
+        limitedStockLabel: "सीमित स्टॉक",
+        outOfStockLabel: "स्टॉक समाप्त",
+        waMessagePrefix: "नमस्ते श्री गजानन एग्रो खामगांव,\nमुझे '{name}' (दर: ₹{price} / {unit}) के बारे में पूछताछ करनी है और ऑर्डर करना है। कृपया उपलब्धता बताएं।"
+      },
+      en: {
+        pageTitle: "Shree Gajanan Agro | Khamgaon Agri Store",
+        announcementText: "Farmer's Trusted Partner | Director: D. Bharambe, Khamgaon",
+        shopHoursBrief: "8:00 AM - 8:30 PM",
+        brandTitle: "Shree Gajanan Agro",
+        navCatalog: "Products",
+        navServices: "Services",
+        navLocation: "Location",
+        navContact: "Contact",
+        heroBadge: "Certified Agricultural Input Center - Cotton Market, Khamgaon",
+        heroHeadlineHtml: 'Premium <span class="text-amber-400">Seeds, Fertilizers</span> & Smart Drip Irrigation',
+        heroSubtitle: "Authorized dealers of certified soyabean, cotton, chickpea and vegetable seeds, high-pressure sprayers, crop nutrition & Kothari drip systems.",
+        heroBtnBrowse: "Browse Products & Rates",
+        heroBtnWa: "WhatsApp Inquiry",
+        badgeGenuine: "100% Certified Seeds",
+        badgeAdviceTitle: "Advice",
+        badgeAdvice: "Free Crop Guidance",
+        badgePriceTitle: "Fair Rates",
+        badgePrice: "Best Farmer Pricing",
+        storeCardTitle: "Store Details",
+        storeCity: "Khamgaon (Dist. Buldhana)",
+        storeStatus: "Open Now",
+        labelOwner: "Owner / Director:",
+        labelAddress: "Address:",
+        valAddress: "Near Tilak Statue, Cotton Market Road, Khamgaon - 444303",
+        labelDirectPhone: "Direct Phone:",
+        btnViewMap: "View Map & Directions",
+        catalogBadge: "Direct Farmer Catalog",
+        catalogTitle: "Available Agri Products & Live Pricing",
+        catalogSubtitle: "Select products and receive live price quotes & stock availability via WhatsApp instantly.",
+        searchPlaceholder: "Search seeds, fertilizers, sprayers...",
+        noProductTitle: "No Products Found",
+        noProductDesc: "Many other varieties are in store. Please contact us directly on WhatsApp.",
+        btnAskWa: "Ask on WhatsApp",
+        servicesTitle: "Our Services & Farmer Advisory",
+        servicesSubtitle: "Professional crop protection and yield improvement consulting for farmers across Khamgaon.",
+        serv1Title: "Certified Seeds & Nutrients",
+        serv1Desc: "Government and branded Mahabeej soyabean, hybrid cotton seeds, bio-fertilizers & soluble nutrients.",
+        serv2Title: "Drip Irrigation Systems",
+        serv2Desc: "High durability inline drip lateral tubes, venturis, screen filters and compression fittings.",
+        serv3Title: "Crop Advisory (Cotton, Ginger, Soyabean)",
+        serv3Desc: "Accurate spraying schedules, pest and disease diagnoses, and balanced NPK fertilizer recommendations.",
+        visitBadge: "Store Visit",
+        locHeading: "Visit Our Khamgaon Store",
+        locSub: "Conveniently located at the central Cotton Market road in Khamgaon, easily accessible to all farmers.",
+        fullAddress: "Shree Gajanan Agro, Near Lokmanya Tilak Statue, Cotton Market Road, Khamgaon, Dist. Buldhana - 444303",
+        labelStoreHours: "Store Hours:",
+        valStoreHours: "8:00 AM to 8:30 PM (Sunday: 8:00 AM to 2:00 PM)",
+        btnOpenMap: "Open in Google Maps",
+        btnCall: "Call Now",
+        mapNote: "Cotton Market Area, Khamgaon (Dist. Buldhana)",
+        mapPincode: "PIN: 444303",
+        brandFooterTitle: "Shree Gajanan Agro - Khamgaon",
+        footerAbout: "The trusted destination for Khamgaon farmers. Certified seeds, drip systems and scientific agricultural advice.",
+        footerLinksTitle: "Quick Links",
+        footCatalog: "Products & Rates",
+        footServices: "Crop Advisory",
+        footLocation: "Store Location",
+        footAdmin: "Admin Portal",
+        footerSocialTitle: "Connect With Us",
+        footContactPrefix: "Call or WhatsApp:",
+        allRights: "All Rights Reserved.",
+        directorFooter: "Certified Agricultural Store | Director: D. Bharambe",
+        dockCatalog: "Catalog",
+        dockCall: "Call",
+        dockLocation: "Map",
+        adminLoginTitle: "Admin Login (Inventory Portal)",
+        adminLoginSubtitle: "Stock & Price Management",
+        btnLoginAction: "Login to Dashboard",
+        invalidAuth: "Invalid Username or Password!",
+        dashTitle: "Store Inventory Dashboard",
+        dashActive: "Active",
+        dashAddProduct: "Add Product",
+        dashReset: "Reset",
+        dashLogout: "Logout",
+        statTotal: "Total Products",
+        statInStock: "In Stock",
+        statLimited: "Limited Stock",
+        statOutOfStock: "Out of Stock",
+        dashTableHead: "Inventory List",
+        dashTableSub: "Update name, price, stock status, category or delete products live.",
+        thProduct: "Product",
+        thCategory: "Category",
+        thPrice: "Price",
+        thStatus: "Status",
+        thActions: "Actions",
+        dashBackToCustomer: "Back to Customer Website",
+        fldProdName: "Product Name *",
+        fldCategory: "Category *",
+        fldPrice: "Price ₹ *",
+        fldUnit: "Unit / Packaging",
+        fldStock: "Stock Status",
+        fldDesc: "Description / Highlights",
+        fldIcon: "Select Icon",
+        btnCancel: "Cancel",
+        btnSave: "Save Product",
+        btnConfirmDelete: "Delete (Confirm)",
+        btnInquireWa: "Inquire on WhatsApp",
+        priceLabel: "Price:",
+        inStockLabel: "In Stock",
+        limitedStockLabel: "Limited Stock",
+        outOfStockLabel: "Out of Stock",
+        waMessagePrefix: "Hello Shree Gajanan Agro Khamgaon,\nI would like to inquire about '{name}' (Price: ₹{price} / {unit}) and place an order. Please confirm availability."
+      }
+    };
+
+    /* Category labels mapped across languages */
+    const CATEGORIES = {
+      all: { key: 'all', mr: 'सर्व (All)', hi: 'सभी (All)', en: 'All' },
+      seeds: { key: 'seeds', mr: 'बियाणे (Seeds)', hi: 'बीज (Seeds)', en: 'Seeds' },
+      fertilizers: { key: 'fertilizers', mr: 'खते (Fertilizers)', hi: 'उर्वरक (Fertilizers)', en: 'Fertilizers' },
+      pesticides: { key: 'pesticides', mr: 'औषधे (Pesticides)', hi: 'कीटनाशक (Pesticides)', en: 'Pesticides' },
+      irrigation: { key: 'irrigation', mr: 'ठिबक सिंचन (Irrigation)', hi: 'ड्रिप सिंचाई (Irrigation)', en: 'Drip Irrigation' },
+      sprayers: { key: 'sprayers', mr: 'फवारणी यंत्रे (Sprayers)', hi: 'स्प्रेयर पंप (Sprayers)', en: 'Sprayers' },
+      general: { key: 'general', mr: 'इतर साहित्य (General)', hi: 'अन्य सामग्री (General)', en: 'General Tools' }
+    };
+
+    /* Default Khamgaon catalog products with multilingual names */
+    const DEFAULT_PRODUCTS = [
+      {
+        id: 'agro-101',
+        categoryKey: 'seeds',
+        name_mr: 'महाबीज जे.एस. ३३५ सोयाबीन बियाणे (JS 335 Soybean)',
+        name_hi: 'महाबीज जे.एस. ३३५ सोयाबीन बीज (JS 335 Soybean)',
+        name_en: 'Mahabeej JS 335 Certified Soybean Seeds',
+        price: 2450,
+        unit: '30 kg बॅग',
+        stock: 'in_stock',
+        icon: 'fa-seedling',
+        desc_mr: 'उच्च उगवण क्षमता, विदर्भातील काळ्या कसदार जमिनीसाठी भरघोस उत्पादन देणारे वाण.',
+        desc_hi: 'उच्च अंकुरण क्षमता, विदर्भ की उपजाऊ मिट्टी के लिए भरपूर पैदावार देने वाली किस्म।',
+        desc_en: 'Certified high-germination seed bag specifically suited for black cotton soil.'
+      },
+      {
+        id: 'agro-102',
+        categoryKey: 'fertilizers',
+        name_mr: 'इफको नॅनो युरिया लिक्विड (IFFCO Nano Urea)',
+        name_hi: 'इफको नैनो यूरिया लिक्विड (IFFCO Nano Urea)',
+        name_en: 'IFFCO Nano Urea Liquid Fertilizer',
+        price: 225,
+        unit: '500 ml बॉटल',
+        stock: 'in_stock',
+        icon: 'fa-flask',
+        desc_mr: 'पारंपरिक युरियाला सक्षम पर्याय, पिकांची जलद शाकीय वाढ व पानांना टवटवीतपणा.',
+        desc_hi: 'पारंपरिक यूरिया का प्रभावी विकल्प, फसलों की तीव्र वानस्पतिक वृद्धि।',
+        desc_en: 'Efficient eco-friendly liquid nutrient boosting vegetative plant growth.'
+      },
+      {
+        id: 'agro-103',
+        categoryKey: 'irrigation',
+        name_mr: 'कोठारी १६ मि.मी. इनलाईन ठिबक नळी (Kothari Inline Drip)',
+        name_hi: 'कोठारी १६ मि.मी. इनलाइन ड्रिप नली (Kothari Inline Drip)',
+        name_en: 'Kothari 16mm Inline Drip Lateral Bundle',
+        price: 3200,
+        unit: '400 मीटर बंडल',
+        stock: 'in_stock',
+        icon: 'fa-faucet-drip',
+        desc_mr: 'अस्सेल व्हर्जिन मटेरियल, दीर्घायुषी ड्रिपर्स, पाणी व विद्राव्य खतांची १००% बचत.',
+        desc_hi: 'शुद्ध वर्जिन सामग्री, टिकाऊ ड्रिपर्स, पानी व घुलनशील खाद की भारी बचत।',
+        desc_en: 'Virgin polymer inline drip lateral tube bundle with clog-resistant drippers.'
+      },
+      {
+        id: 'agro-104',
+        categoryKey: 'sprayers',
+        name_mr: '१२V बॅटरी फवारणी पंप (Double Motor Knapsack Sprayer)',
+        name_hi: '१२V बैटरी स्प्रेयर पंप (Double Motor Knapsack Sprayer)',
+        name_en: '12V Double Motor Battery Knapsack Sprayer',
+        price: 2400,
+        unit: '1 नग',
+        stock: 'limited',
+        icon: 'fa-spray-can',
+        desc_mr: 'डबल मोटर, वेगवान प्रेशर, चार्जिंग बॅटरीसह शेतात फवारणीसाठी सुलभ व हलके.',
+        desc_hi: 'डबल मोटर, तेज प्रेशर, रिचार्जेबल बैटरी के साथ खेतों में स्प्रे के लिए हल्का व मजबूत।',
+        desc_en: 'High pressure dual motor battery sprayer for comfortable farm spraying.'
+      },
+      {
+        id: 'agro-105',
+        categoryKey: 'pesticides',
+        name_mr: 'साफ बुरशीनाशक (Saaf Fungicide - UPL)',
+        name_hi: 'साफ फफूंदनाशक (Saaf Fungicide - UPL)',
+        name_en: 'UPL Saaf Systemic & Contact Fungicide',
+        price: 780,
+        unit: '500 ग्रॅम',
+        stock: 'in_stock',
+        icon: 'fa-shield-virus',
+        desc_mr: 'मॅन्कोझेब + कार्बेन्डाझिम युक्त आंतरप्रवाही व स्पर्शजन्य बुरशीनाशक.',
+        desc_hi: 'मैंकोजेब + कार्बेन्डाजिम युक्त प्रणालीगत व संपर्क फफूंदनाशक।',
+        desc_en: 'Mancozeb + Carbendazim dual action broad spectrum crop fungicide.'
+      },
+      {
+        id: 'agro-106',
+        categoryKey: 'fertilizers',
+        name_mr: 'चिलेटेड मायक्रोन्यूट्रियंट टॉनिक (Crop Micronutrient Booster)',
+        name_hi: 'चिलेटेड माइक्रोन्यूट्रिएंट टॉनिक (Crop Micronutrient Booster)',
+        name_en: 'Chelated Multi Micronutrient Plant Booster',
+        price: 650,
+        unit: '1 लिटर',
+        stock: 'in_stock',
+        icon: 'fa-flask',
+        desc_mr: 'हळद, आले व कपाशीच्या मुळांची वाढ, फुटवे व फुटव्यांची संख्या वाढवण्यासाठी.',
+        desc_hi: 'हल्दी, अदरक व कपास में जड़ों के विकास और कल्ले बढ़ाने के लिए उत्तम टॉनिक।',
+        desc_en: 'Essential trace minerals for enhanced root growth and vigorous crop tillering.'
+      },
+      {
+        id: 'agro-107',
+        categoryKey: 'seeds',
+        name_mr: 'कपाशी बियाणे बीजी-२ संकरित (BG-II Hybrid Cotton Seeds)',
+        name_hi: 'कपास बीज बीजी-२ हाइब्रिड (BG-II Hybrid Cotton Seeds)',
+        name_en: 'BG-II Bollgard Hybrid Cotton Seeds',
+        price: 864,
+        unit: '450 ग्रॅम पाकीट',
+        stock: 'in_stock',
+        icon: 'fa-seedling',
+        desc_mr: 'बोंडअळी प्रतिकारक, मोठ्या बोंडांची संख्या आणि उच्च उतारा देणारे संकरित वाण.',
+        desc_hi: 'गुलाबी सुंडी प्रतिरोधी, बड़े टिंडों की संख्या और उत्कृष्ट पैदावार वाली किस्म।',
+        desc_en: 'High-yield bollworm-resistant hybrid cotton seeds for Vidarbha fields.'
+      },
+      {
+        id: 'agro-108',
+        categoryKey: 'pesticides',
+        name_mr: 'कोराजन कीटकनाशक (Coragen FMC Insecticide)',
+        name_hi: 'कोराजन कीटनाशक (Coragen FMC Insecticide)',
+        name_en: 'FMC Coragen Premium Insecticide',
+        price: 1850,
+        unit: '150 ml',
+        stock: 'limited',
+        icon: 'fa-shield-virus',
+        desc_mr: 'क्लोराँट्रानिलीप्रोल युक्त, खोडकिडा आणि अळीच्या नियंत्रणासाठी सर्वोत्तम उपाय.',
+        desc_hi: 'क्लोरांट्रानिलिप्रोल युक्त, तना छेदक व इल्लियों के प्रभावी नियंत्रण के लिए सर्वश्रेष्ठ।',
+        desc_en: 'Chlorantraniliprole active crop protection against stem borers and caterpillars.'
+      }
+    ];
+
+    const STORAGE_KEY = 'shree_gajanan_agro_products_v2';
+    const AUTH_KEY = 'shree_gajanan_agro_auth';
+    const LANG_KEY = 'shree_gajanan_agro_lang';
+
+    let currentLang = 'mr';
+    let products = [];
+    let selectedCategory = 'all';
+    let searchQuery = '';
+    let isAdminAuthenticated = false;
+    let toastTimeout = null;
+
+    /* ============================================================
+       2. INITIALIZATION
+       ============================================================ */
+    document.addEventListener('DOMContentLoaded', () => {
+      // Determine language
+      const savedLang = localStorage.getItem(LANG_KEY);
+      if (savedLang && (savedLang === 'mr' || savedLang === 'hi' || savedLang === 'en')) {
+        currentLang = savedLang;
+      }
+      
+      loadProducts();
+      checkAuthStatus();
+      applyLanguage(currentLang);
+      
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value.toLowerCase().trim();
+          renderProducts();
+        });
+      }
+    });
+
+    /* ============================================================
+       3. LANGUAGE ENGINE (I18N)
+       ============================================================ */
+    function setLanguage(lang) {
+      if (lang !== 'mr' && lang !== 'hi' && lang !== 'en') return;
+      currentLang = lang;
+      localStorage.setItem(LANG_KEY, lang);
+      applyLanguage(lang);
+      showToast(lang === 'mr' ? 'भाषा मराठीत बदलली.' : lang === 'hi' ? 'भाषा हिंदी में बदली गई।' : 'Language switched to English.', 'info');
+    }
+
+    function applyLanguage(lang) {
+      const dict = I18N[lang] || I18N.mr;
+
+      // Update HTML lang attribute and Document Title
+      document.documentElement.lang = lang;
+      document.title = dict.pageTitle;
+
+      // Update text in elements with data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+
+      // Special Headline HTML
+      const heroHeadline = document.getElementById('heroHeadline');
+      if (heroHeadline && dict.heroHeadlineHtml) {
+        heroHeadline.innerHTML = dict.heroHeadlineHtml;
+      }
+
+      // Update search placeholder
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput && dict.searchPlaceholder) {
+        searchInput.placeholder = dict.searchPlaceholder;
+      }
+
+      // Update language pill active states
+      ['mr', 'hi', 'en'].forEach(l => {
+        const btn = document.getElementById(`langBtn_${l}`);
+        if (btn) {
+          if (l === lang) {
+            btn.className = 'touch-target px-2 sm:px-2.5 py-1 text-xs font-bold rounded-lg transition lang-pill-active';
+          } else {
+            btn.className = 'touch-target px-2 sm:px-2.5 py-1 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900';
+          }
+        }
+      });
+
+      // Update general WhatsApp Links with localized greeting
+      const defaultGreeting = encodeURIComponent(
+        lang === 'mr' ? 'नमस्कार श्री गजानन अॅग्रो खामगाव, मला शेती साहित्याबद्दल माहिती हवी आहे.' :
+        lang === 'hi' ? 'नमस्ते श्री गजानन एग्रो खामगांव, मुझे कृषि सामग्री के बारे में जानकारी चाहिए।' :
+        'Hello Shree Gajanan Agro Khamgaon, I have an agricultural inquiry.'
+      );
+      const generalWaUrl = `https://wa.me/919070911555?text=${defaultGreeting}`;
+      
+      const headerWaLink = document.getElementById('headerWaLink');
+      if (headerWaLink) headerWaLink.href = generalWaUrl;
+      const heroWaBtn = document.getElementById('heroWaBtn');
+      if (heroWaBtn) heroWaBtn.href = generalWaUrl;
+      const dockWaLink = document.getElementById('dockWaLink');
+      if (dockWaLink) dockWaLink.href = generalWaUrl;
+      const emptyStateWaBtn = document.getElementById('emptyStateWaBtn');
+      if (emptyStateWaBtn) emptyStateWaBtn.href = generalWaUrl;
+
+      // Re-render categories & catalog with new language
+      setupCategories();
+      renderProducts();
+      if (!document.getElementById('adminDashboardModal').classList.contains('hidden')) {
+        renderAdminDashboard();
+      }
+    }
+
+    /* ============================================================
+       4. CATEGORIES SETUP
+       ============================================================ */
+    function setupCategories() {
+      const container = document.getElementById('categoryContainer');
+      if (!container) return;
+
+      const keys = ['all', 'seeds', 'fertilizers', 'pesticides', 'irrigation', 'sprayers', 'general'];
+
+      container.innerHTML = keys.map(key => {
+        const catObj = CATEGORIES[key];
+        const label = catObj[currentLang] || catObj.mr;
+        const isActive = selectedCategory === key;
+
+        return `
+          <button 
+            onclick="setCategory('${key}')"
+            class="touch-target px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition ${
+              isActive 
+                ? 'bg-agro-700 text-white shadow-sm ring-2 ring-agro-600/30' 
+                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+            }">
+            ${label}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function setCategory(catKey) {
+      selectedCategory = catKey;
+      setupCategories();
+      renderProducts();
+    }
+
+    /* ============================================================
+       5. DATA STORAGE & PRODUCTS LIST
+       ============================================================ */
+    function loadProducts() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          products = JSON.parse(stored);
+        } else {
+          products = [...DEFAULT_PRODUCTS];
+          saveProductsToStorage();
+        }
+      } catch (e) {
+        products = [...DEFAULT_PRODUCTS];
+      }
+    }
+
+    function saveProductsToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+      } catch (e) {
+        console.error('Storage error', e);
+        showToast('Storage error', 'error');
+      }
+    }
+
+    function getProductDisplayName(item) {
+      if (currentLang === 'hi' && item.name_hi) return item.name_hi;
+      if (currentLang === 'en' && item.name_en) return item.name_en;
+      return item.name_mr || item.name || 'Agro Product';
+    }
+
+    function getProductDisplayDesc(item) {
+      if (currentLang === 'hi' && item.desc_hi) return item.desc_hi;
+      if (currentLang === 'en' && item.desc_en) return item.desc_en;
+      return item.desc_mr || item.desc || '';
+    }
+
+    function getCategoryDisplayName(catKey) {
+      const cat = CATEGORIES[catKey] || CATEGORIES.general;
+      return cat[currentLang] || cat.mr;
+    }
+
+    /* ============================================================
+       6. RENDER CUSTOMER CATALOG
+       ============================================================ */
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      const emptyState = document.getElementById('emptyState');
+      const dict = I18N[currentLang] || I18N.mr;
+
+      const filtered = products.filter(item => {
+        const matchesCategory = (selectedCategory === 'all') || (item.categoryKey === selectedCategory);
+        const name = getProductDisplayName(item).toLowerCase();
+        const desc = getProductDisplayDesc(item).toLowerCase();
+        const catName = getCategoryDisplayName(item.categoryKey).toLowerCase();
+
+        const matchesSearch = !searchQuery || 
+          name.includes(searchQuery) ||
+          desc.includes(searchQuery) ||
+          catName.includes(searchQuery);
+
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      grid.innerHTML = filtered.map(item => {
+        const displayName = getProductDisplayName(item);
+        const displayDesc = getProductDisplayDesc(item);
+        const displayCategory = getCategoryDisplayName(item.categoryKey).split(' ')[0];
+
+        let badgeBg = 'bg-emerald-100 text-emerald-800 border-emerald-200';
+        let badgeText = dict.inStockLabel;
+        if (item.stock === 'limited') {
+          badgeBg = 'bg-amber-100 text-amber-800 border-amber-200';
+          badgeText = dict.limitedStockLabel;
+        } else if (item.stock === 'out_of_stock') {
+          badgeBg = 'bg-rose-100 text-rose-800 border-rose-200';
+          badgeText = dict.outOfStockLabel;
+        }
+
+        const msgTemplate = dict.waMessagePrefix || I18N.mr.waMessagePrefix;
+        const inquiryText = msgTemplate
+          .replace('{name}', displayName)
+          .replace('{price}', Number(item.price).toLocaleString('en-IN'))
+          .replace('{unit}', item.unit || 'नग');
+
+        const waUrl = `https://wa.me/919070911555?text=${encodeURIComponent(inquiryText)}`;
+
+        return `
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between overflow-hidden">
+            <div class="p-4 sm:p-5">
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">
+                  ${displayCategory}
+                </span>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full border ${badgeBg}">
+                  ${badgeText}
+                </span>
+              </div>
+
+              <div class="w-full h-32 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-agro-700 text-2xl border border-slate-100">
+                  <i class="fa-solid ${item.icon || 'fa-seedling'}"></i>
+                </div>
+              </div>
+
+              <h3 class="font-bold text-slate-900 text-base leading-snug line-clamp-2 mb-1.5" title="${displayName}">
+                ${displayName}
+              </h3>
+              <p class="text-slate-500 text-xs line-clamp-2 leading-relaxed mb-3">
+                ${displayDesc || 'Shree Gajanan Agro - 100% Genuine Certified Agri Inputs.'}
+              </p>
+
+              <div class="flex items-baseline gap-1 mt-2">
+                <span class="text-xs text-slate-500 font-semibold">${dict.priceLabel}</span>
+                <span class="text-xl sm:text-2xl font-black text-agro-800">₹${Number(item.price).toLocaleString('en-IN')}</span>
+                <span class="text-xs text-slate-500">/ ${item.unit || 'नग'}</span>
+              </div>
+            </div>
+
+            <div class="p-4 pt-0">
+              <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="touch-target w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-sm transition active:scale-95">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>${dict.btnInquireWa}</span>
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    /* ============================================================
+       7. AUTHENTICATION & ADMIN PORTAL
+       ============================================================ */
+    function checkAuthStatus() {
+      isAdminAuthenticated = localStorage.getItem(AUTH_KEY) === 'true';
+      updateAdminButtonUI();
+    }
+
+    function updateAdminButtonUI() {
+      const btn = document.getElementById('adminBtn');
+      const label = document.getElementById('adminBtnLabel');
+      const icon = document.getElementById('adminBtnIcon');
+      const dockAdminLabel = document.getElementById('dockAdminLabel');
+
+      if (isAdminAuthenticated) {
+        label.textContent = 'Dashboard';
+        if (dockAdminLabel) dockAdminLabel.textContent = 'Dash';
+        btn.classList.add('bg-agro-100', 'text-agro-900', 'border-agro-400');
+        icon.className = 'fa-solid fa-gauge-high text-agro-700';
+        btn.onclick = () => toggleAdminDashboardView(true);
+      } else {
+        label.textContent = 'Admin';
+        if (dockAdminLabel) dockAdminLabel.textContent = 'Admin';
+        btn.classList.remove('bg-agro-100', 'text-agro-900', 'border-agro-400');
+        icon.className = 'fa-solid fa-lock text-agro-700';
+        btn.onclick = openAdminModal;
+      }
+    }
+
+    function handleFooterAdminClick() {
+      if (isAdminAuthenticated) {
+        toggleAdminDashboardView(true);
+      } else {
+        openAdminModal();
+      }
+    }
+
+    function handleMobileAdminClick() {
+      if (isAdminAuthenticated) {
+        toggleAdminDashboardView(true);
+      } else {
+        openAdminModal();
+      }
+    }
+
+    function openAdminModal() {
+      document.getElementById('loginModal').classList.remove('hidden');
+      document.getElementById('loginErrorMsg').classList.add('hidden');
+      document.getElementById('adminUser').value = '';
+      document.getElementById('adminPass').value = '';
+      setTimeout(() => {
+        document.getElementById('adminUser').focus();
+      }, 100);
+    }
+
+    function closeAdminModal() {
+      document.getElementById('loginModal').classList.add('hidden');
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const usernameInput = document.getElementById('adminUser').value.trim().toLowerCase();
+      const passwordInput = document.getElementById('adminPass').value.trim();
+      const errorMsg = document.getElementById('loginErrorMsg');
+
+      // Credentials strictly:
+      // Username: shree gajanan agro
+      // Password: Agro4321
+      if (usernameInput === 'shree gajanan agro' && passwordInput === 'Agro4321') {
+        localStorage.setItem(AUTH_KEY, 'true');
+        isAdminAuthenticated = true;
+        closeAdminModal();
+        updateAdminButtonUI();
+        showToast(currentLang === 'en' ? 'Login successful! Opening dashboard.' : 'लॉगिन यशस्वी झाले! डॅशबोर्ड उघडला जात आहे.', 'success');
+        toggleAdminDashboardView(true);
+      } else {
+        errorMsg.classList.remove('hidden');
+        showToast(currentLang === 'en' ? 'Invalid user ID or password!' : 'अवैध वापरकर्ता नाव किंवा पासवर्ड!', 'error');
+      }
+    }
+
+    function handleAdminLogout() {
+      localStorage.removeItem(AUTH_KEY);
+      isAdminAuthenticated = false;
+      updateAdminButtonUI();
+      toggleAdminDashboardView(false);
+      showToast(currentLang === 'en' ? 'Logged out successfully.' : 'तुम्ही यशस्वीरित्या लॉगआऊट झाला आहात.', 'info');
+    }
+
+    /* ============================================================
+       8. ADMIN DASHBOARD & LIVE INVENTORY
+       ============================================================ */
+    function toggleAdminDashboardView(show) {
+      const modal = document.getElementById('adminDashboardModal');
+      if (show) {
+        modal.classList.remove('hidden');
+        renderAdminDashboard();
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    function renderAdminDashboard() {
+      document.getElementById('statTotalItems').textContent = products.length;
+      document.getElementById('statInStock').textContent = products.filter(p => p.stock === 'in_stock').length;
+      document.getElementById('statLimitedStock').textContent = products.filter(p => p.stock === 'limited').length;
+      document.getElementById('statOutOfStock').textContent = products.filter(p => p.stock === 'out_of_stock').length;
+      filterAdminTable();
+    }
+
+    function filterAdminTable() {
+      const query = (document.getElementById('adminTableSearch')?.value || '').toLowerCase().trim();
+      const tbody = document.getElementById('adminProductsTableBody');
+
+      const filtered = products.filter(p => {
+        const name = getProductDisplayName(p).toLowerCase();
+        const cat = getCategoryDisplayName(p.categoryKey).toLowerCase();
+        return !query || name.includes(query) || cat.includes(query);
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="py-8 text-center text-slate-400 font-medium">कोणतेही उत्पादन आढळले नाही.</td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(item => {
+        const name = getProductDisplayName(item);
+        const category = getCategoryDisplayName(item.categoryKey);
+
+        let stockLabel = 'In Stock';
+        let stockClass = 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200';
+        if (item.stock === 'limited') {
+          stockLabel = 'Limited';
+          stockClass = 'bg-amber-100 text-amber-800 hover:bg-amber-200';
+        } else if (item.stock === 'out_of_stock') {
+          stockLabel = 'Out of Stock';
+          stockClass = 'bg-rose-100 text-rose-800 hover:bg-rose-200';
+        }
+
+        return `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="py-3 px-4">
+              <div class="font-bold text-slate-800">${name}</div>
+              <div class="text-xs text-slate-400">${item.unit || 'नग'}</div>
+            </td>
+            <td class="py-3 px-3 text-xs text-slate-600">${category}</td>
+            <td class="py-3 px-3 font-bold text-agro-800">₹${Number(item.price).toLocaleString('en-IN')}</td>
+            <td class="py-3 px-3">
+              <button onclick="toggleItemStockStatus('${item.id}')" title="Click to toggle status" class="px-2.5 py-1 text-xs font-bold rounded-full transition ${stockClass}">
+                ${stockLabel}
+              </button>
+            </td>
+            <td class="py-3 px-4 text-right">
+              <div class="inline-flex items-center gap-1.5 justify-end">
+                <button onclick="openProductFormModal('${item.id}')" title="Edit" class="touch-target w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button onclick="confirmDeleteProduct('${item.id}')" title="Delete" class="touch-target w-8 h-8 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 flex items-center justify-center transition">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function toggleItemStockStatus(id) {
+      const idx = products.findIndex(p => p.id === id);
+      if (idx !== -1) {
+        const current = products[idx].stock;
+        let next = 'in_stock';
+        if (current === 'in_stock') next = 'limited';
+        else if (current === 'limited') next = 'out_of_stock';
+        else if (current === 'out_of_stock') next = 'in_stock';
+
+        products[idx].stock = next;
+        saveProductsToStorage();
+        renderProducts();
+        renderAdminDashboard();
+        showToast(`Stock updated: ${next}`, 'info');
+      }
+    }
+
+    /* ============================================================
+       9. ADD & EDIT PRODUCT FORM
+       ============================================================ */
+    function openProductFormModal(productId = null) {
+      const form = document.getElementById('productForm');
+      form.reset();
+
+      const title = document.getElementById('productFormTitle');
+      const subtitle = document.getElementById('productFormSubtitle');
+      const editIdInput = document.getElementById('editProductId');
+
+      if (productId) {
+        const item = products.find(p => p.id === productId);
+        if (item) {
+          title.textContent = 'उत्पादन संपादित करा (Edit Product)';
+          subtitle.textContent = getProductDisplayName(item);
+          editIdInput.value = item.id;
+          document.getElementById('formProductName').value = getProductDisplayName(item);
+          document.getElementById('formProductCategory').value = item.categoryKey || 'seeds';
+          document.getElementById('formProductPrice').value = item.price;
+          document.getElementById('formProductUnit').value = item.unit || '';
+          document.getElementById('formProductStock').value = item.stock || 'in_stock';
+          document.getElementById('formProductDesc').value = getProductDisplayDesc(item);
+          document.getElementById('formProductIcon').value = item.icon || 'fa-seedling';
+        }
+      } else {
+        title.textContent = 'नवीन उत्पादन जोडा (Add New Product)';
+        subtitle.textContent = 'नाव, भाव आणि साठा प्रविष्ट करा';
+        editIdInput.value = '';
+        document.getElementById('formProductCategory').value = 'seeds';
+        document.getElementById('formProductStock').value = 'in_stock';
+        document.getElementById('formProductIcon').value = 'fa-seedling';
+      }
+
+      document.getElementById('productFormModal').classList.remove('hidden');
+    }
+
+    function closeProductFormModal() {
+      document.getElementById('productFormModal').classList.add('hidden');
+    }
+
+    function handleSaveProduct(e) {
+      e.preventDefault();
+      const editId = document.getElementById('editProductId').value;
+      const name = document.getElementById('formProductName').value.trim();
+      const categoryKey = document.getElementById('formProductCategory').value;
+      const price = parseFloat(document.getElementById('formProductPrice').value) || 0;
+      const unit = document.getElementById('formProductUnit').value.trim() || 'नग';
+      const stock = document.getElementById('formProductStock').value;
+      const desc = document.getElementById('formProductDesc').value.trim();
+      const icon = document.getElementById('formProductIcon').value;
+
+      if (!name) {
+        showToast('उत्पादनाचे नाव आवश्यक आहे.', 'error');
+        return;
+      }
+
+      if (editId) {
+        // Edit existing product
+        const idx = products.findIndex(p => p.id === editId);
+        if (idx !== -1) {
+          products[idx] = {
+            ...products[idx],
+            name_mr: name,
+            name_hi: name,
+            name_en: name,
+            categoryKey,
+            price,
+            unit,
+            stock,
+            desc_mr: desc,
+            desc_hi: desc,
+            desc_en: desc,
+            icon
+          };
+          showToast(`'${name}' updated successfully!`, 'success');
+        }
+      } else {
+        // Add new product
+        const newProduct = {
+          id: 'agro-' + Date.now(),
+          name_mr: name,
+          name_hi: name,
+          name_en: name,
+          categoryKey,
+          price,
+          unit,
+          stock,
+          desc_mr: desc,
+          desc_hi: desc,
+          desc_en: desc,
+          icon
+        };
+        products.unshift(newProduct);
+        showToast(`'${name}' added to catalog!`, 'success');
+      }
+
+      saveProductsToStorage();
+      closeProductFormModal();
+      renderProducts();
+      renderAdminDashboard();
+    }
+
+    /* ============================================================
+       10. CUSTOM CONFIRMATION (NO BROWSER ALERT / CONFIRM)
+       ============================================================ */
+    function confirmDeleteProduct(id) {
+      const item = products.find(p => p.id === id);
+      if (!item) return;
+
+      const name = getProductDisplayName(item);
+      document.getElementById('confirmModalTitle').textContent = 'उत्पादन हटवायचे आहे का?';
+      document.getElementById('confirmModalMessage').textContent = `'${name}' कायमस्वरूपी यादीतून काढून टाकले जाईल.`;
+      
+      const confirmActionBtn = document.getElementById('confirmActionBtn');
+      confirmActionBtn.onclick = () => {
+        deleteProduct(id);
+        closeConfirmModal();
+      };
+
+      document.getElementById('confirmModal').classList.remove('hidden');
+    }
+
+    function closeConfirmModal() {
+      document.getElementById('confirmModal').classList.add('hidden');
+    }
+
+    function deleteProduct(id) {
+      const idx = products.findIndex(p => p.id === id);
+      if (idx !== -1) {
+        const deletedName = getProductDisplayName(products[idx]);
+        products.splice(idx, 1);
+        saveProductsToStorage();
+        renderProducts();
+        renderAdminDashboard();
+        showToast(`'${deletedName.slice(0, 20)}...' deleted.`, 'warning');
+      }
+    }
+
+    function resetToDefaultCatalogPrompt() {
+      document.getElementById('confirmModalTitle').textContent = 'कॅटलॉग रिसेट करायचा का?';
+      document.getElementById('confirmModalMessage').textContent = 'सर्व उत्पादने मूळ खामगाव कॅटलॉगप्रमाणे पूर्ववत केली जातील.';
+      
+      const confirmActionBtn = document.getElementById('confirmActionBtn');
+      confirmActionBtn.onclick = () => {
+        products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+        saveProductsToStorage();
+        renderProducts();
+        renderAdminDashboard();
+        closeConfirmModal();
+        showToast('कॅटलॉग पूर्ववत रिसेट करण्यात आले!', 'success');
+      };
+
+      document.getElementById('confirmModal').classList.remove('hidden');
+    }
+
+    /* ============================================================
+       11. NON-BLOCKING ANIMATED TOAST
+       ============================================================ */
+    function showToast(message, type = 'info') {
+      const toast = document.getElementById('toastNotification');
+      const msgEl = document.getElementById('toastMsg');
+      const iconEl = document.getElementById('toastIcon');
+
+      if (toastTimeout) {
+        clearTimeout(toastTimeout);
+      }
+
+      msgEl.textContent = message;
+
+      if (type === 'success') {
+        iconEl.className = 'fa-solid fa-circle-check text-emerald-400 text-base';
+        toast.className = 'fixed bottom-16 md:bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl border border-emerald-500/40 text-sm font-medium flex items-center gap-3 max-w-sm toast-enter pointer-events-auto';
+      } else if (type === 'error') {
+        iconEl.className = 'fa-solid fa-circle-xmark text-rose-400 text-base';
+        toast.className = 'fixed bottom-16 md:bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl border border-rose-500/40 text-sm font-medium flex items-center gap-3 max-w-sm toast-enter pointer-events-auto';
+      } else if (type === 'warning') {
+        iconEl.className = 'fa-solid fa-triangle-exclamation text-amber-400 text-base';
+        toast.className = 'fixed bottom-16 md:bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl border border-amber-500/40 text-sm font-medium flex items-center gap-3 max-w-sm toast-enter pointer-events-auto';
+      } else {
+        iconEl.className = 'fa-solid fa-circle-info text-sky-400 text-base';
+        toast.className = 'fixed bottom-16 md:bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl border border-sky-500/40 text-sm font-medium flex items-center gap-3 max-w-sm toast-enter pointer-events-auto';
+      }
+
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('toast-enter');
+        toast.classList.add('toast-exit');
+        setTimeout(() => {
+          toast.className = 'fixed bottom-16 md:bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl border border-slate-700 text-sm font-medium transform transition-all duration-300 translate-y-24 opacity-0 pointer-events-none flex items-center gap-3 max-w-sm';
+        }, 250);
+      }, 3200);
+    }
+
+  </script>
+</body>
+</html>
